@@ -1,0 +1,146 @@
+.room-list {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.room-list h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.error {
+  text-align: center;
+  padding: 40px;
+  color: #e74c3c;
+}
+
+.no-rooms {
+  text-align: center;
+  color: #666;
+  padding: 40px;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 20px;
+}
+
+.room-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.room-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.room-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.room-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.available {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.occupied {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.status.maintenance {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.room-details p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.room-details strong {
+  color: #333;
+}
+
+.description {
+  font-style: italic;
+  color: #666;
+  margin-top: 10px;
+}
+
+.amenities {
+  margin-top: 15px;
+}
+
+.amenity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.amenity-tag {
+  background: #e9ecef;
+  color: #495057;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 12px;
+}
+
+.property-info {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e9ecef;
+  color: #666;
+}
+
+.book-now-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #00b4d8 0%, #0077b6 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.book-now-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.4);
+}
+
+.book-now-btn:active {
+  transform: translateY(1px);
+}
