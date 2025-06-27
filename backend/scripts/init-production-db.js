@@ -1,38 +1,39 @@
-const fs = require('fs');
-const path = require('path');
-const sqlite3 = require('sqlite3').verbose();
+const fs = require("fs");
+const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
 
 // Ensure data directory exists
-const dataDir = '/var/data';
-if (!fs.existsSync(dataDir)) {
-  console.log('Creating data directory...');
-  fs.mkdirSync(dataDir, { recursive: true });
-}
 
-const dbPath = process.env.DB_PATH || '/var/data/pg_rental.db';
+const dbPath = process.env.DB_PATH || "./pg_rental.db";
 
-console.log('Initializing production database at:', dbPath);
+console.log("Initializing production database at:", dbPath);
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
-    console.error('Error creating database:', err);
+    console.error("Error creating database:", err);
     process.exit(1);
   }
-  console.log('Connected to production SQLite database');
+  console.log("Connected to production SQLite database");
 });
 
 // Read and execute schema
-const schemaPath = path.join(__dirname, '..', '..', 'database', 'schema-sqlite.sql');
-const schema = fs.readFileSync(schemaPath, 'utf8');
+const schemaPath = path.join(
+  __dirname,
+  "..",
+  "..",
+  "database",
+  "schema-sqlite.sql"
+);
+const schema = fs.readFileSync(schemaPath, "utf8");
 
 // Split schema into individual statements
-const statements = schema.split(';').filter(stmt => stmt.trim());
+const statements = schema.split(";").filter((stmt) => stmt.trim());
 
 // Execute each statement
 db.serialize(() => {
   statements.forEach((statement, index) => {
     if (statement.trim()) {
-      db.run(statement + ';', (err) => {
+      db.run(statement + ";", (err) => {
         if (err) {
           console.error(`Error executing statement ${index + 1}:`, err);
         } else {
@@ -51,6 +52,6 @@ db.serialize(() => {
     (2, 1, '102', 1, 3, 6000, 12000, 'available', 'WiFi,Common Bathroom', 'Triple sharing room'),
     (3, 1, '201', 2, 1, 12000, 24000, 'available', 'AC,WiFi,Attached Bathroom,Balcony', 'Premium single room with balcony')`);
 
-  console.log('Production database initialized successfully');
+  console.log("Production database initialized successfully");
   db.close();
 });
