@@ -32,9 +32,9 @@ router.get('/', authenticate, authorize('owner', 'admin'), async (req, res) => {
 // Get applications for a specific user (public - for demo)
 router.get('/user/:userId', async (req, res) => {
   try {
-    // For demo purposes, return mock data
-    // In production, this would check authentication and fetch user's applications
-    const mockApplications = [
+    // In production, implement proper authentication
+    // For now, return sample data
+    const sampleApplications = [
       {
         id: 1,
         room_number: '101',
@@ -73,7 +73,7 @@ router.get('/user/:userId', async (req, res) => {
       }
     ];
     
-    res.json({ success: true, data: mockApplications });
+    res.json({ success: true, data: sampleApplications });
   } catch (error) {
     console.error('Error fetching user applications:', error);
     res.status(500).json({ success: false, error: 'Failed to fetch user applications' });

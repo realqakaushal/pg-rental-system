@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: pg-rental-backend
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /var/data/pg_rental.db
+      - key: FRONTEND_URL
+        value: https://your-frontend-url.onrender.com
+    disk:
+      name: sqlite-data
+      mountPath: /var/data
+      sizeGB: 1

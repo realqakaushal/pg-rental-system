@@ -20,9 +20,9 @@ const RentalProfile = () => {
   const fetchUserApplications = async () => {
     try {
       setLoading(true);
-      // For demo purposes, we'll create mock data
-      // In a real app, this would fetch based on logged-in user
-      const mockApplications = [
+      // For production, implement proper user authentication
+      // Currently using sample data for demonstration
+      const demoApplications = [
         {
           id: 1,
           room_number: '101',
@@ -58,7 +58,7 @@ const RentalProfile = () => {
           }
         }
       ];
-      setUserApplications(mockApplications);
+      setUserApplications(demoApplications);
     } catch (error) {
       console.error('Error fetching applications:', error);
     } finally {
@@ -68,7 +68,8 @@ const RentalProfile = () => {
 
   const fetchPaymentHistory = async () => {
     try {
-      const response = await payments.getUserPayments('demo-user-1');
+      const userId = localStorage.getItem('userId') || 'guest-user';
+      const response = await payments.getUserPayments(userId);
       setPaymentHistory(response.data.data || []);
     } catch (error) {
       console.error('Error fetching payment history:', error);

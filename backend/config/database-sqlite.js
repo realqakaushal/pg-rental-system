@@ -1,7 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
-const dbPath = path.join(__dirname, '..', 'pg_rental.db');
+const dbPath = process.env.NODE_ENV === 'production' 
+  ? process.env.DB_PATH || '/var/data/pg_rental.db'
+  : path.join(__dirname, '..', 'pg_rental.db');
 
 const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {

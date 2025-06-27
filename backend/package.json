@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "jest"
+    "test": "jest",
+    "build": "npm install && node scripts/init-production-db.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

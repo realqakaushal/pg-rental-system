@@ -13,8 +13,8 @@ router.post('/', async (req, res) => {
       transactionId
     } = req.body;
 
-    // For demo purposes, using a mock userId
-    const userId = req.body.userId || 'demo-user-1';
+    // In production, get userId from authenticated session
+    const userId = req.body.userId || req.user?.id || 'guest-user';
     
     const currentDate = new Date();
     const paymentData = {
